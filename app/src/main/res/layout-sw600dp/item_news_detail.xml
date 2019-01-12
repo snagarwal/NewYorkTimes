@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="news"
+            type="com.satya.newyorktimes.data.model.News" />
+
+        <variable
+            name="readMoreClickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/spacing_micro"
+        android:paddingTop="@dimen/spacing_mini">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/heading_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageNewsBanner"
+                imageUrl="@{news.getBannerImageLarge()}"
+                android:layout_width="384dp"
+                android:layout_height="@dimen/banner_card_image_hight"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image_loading"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/icon_xxlarge"
+                android:background="@drawable/image_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imageNewsBanner" />
+
+            <ImageView
+                android:layout_width="@dimen/icon_mini_2"
+                android:layout_height="@dimen/icon_mini_2"
+                android:layout_margin="@dimen/spacing_regular"
+                android:src="@drawable/ic_menu_share"
+                android:tint="@color/grey_300"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textNewsType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#66000000"
+                android:ellipsize="middle"
+                android:padding="@dimen/spacing_regular"
+                android:singleLine="true"
+                android:text="@{news.item_type}"
+                android:textColor="@color/grey_300"
+                android:textSize="@dimen/text_medium"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/imageNewsBanner"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Artical" />
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_mini"
+                android:layout_marginBottom="@dimen/spacing_mini"
+                android:layout_marginEnd="@dimen/spacing_mini"
+                app:layout_constraintEnd_toStartOf="@+id/imageNewsBanner"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView
+                    android:id="@+id/textNewsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{news.title}"
+                    android:textColor="@color/news_black"
+                    android:textSize="@dimen/text_medium_3"
+                    android:fontFamily="@font/play_fair_display_black"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Work Policies May Be Kinder, but Brutal Competition Isn’t" />
+
+                <TextView
+                    android:id="@+id/textNewsSource"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_micro"
+                    android:ellipsize="middle"
+                    android:fontFamily="@font/play_fair_display_bold_italic"
+                    android:singleLine="true"
+                    android:text="@{news.byline}"
+                    android:textColor="@color/grey_700"
+                    android:textSize="@dimen/text_regular"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/textNewsTitle"
+                    tools:text="The New York Times" />
+
+
+                <com.github.curioustechizen.ago.RelativeTimeTextView
+                    android:id="@+id/textNewsPosted"
+                    referenceTime="@{news.published_date}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_grid_size"
+                    android:layout_marginTop="@dimen/spacing_regular"
+                    android:ellipsize="middle"
+                    android:singleLine="true"
+                    android:textColor="@color/gray100"
+                    android:textSize="@dimen/text_mini"
+                    app:layout_constraintTop_toBottomOf="@+id/textNewsSource"
+                    tools:text="5 hours ago" />
+
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textNewsAbstract"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_micro"
+            android:ellipsize="middle"
+            android:fontFamily="@font/play_fair_display_regular"
+            android:text="@{news.abstrct}"
+            android:textColor="@color/news_black"
+            android:textSize="@dimen/text_medium_2"
+            app:layout_constraintTop_toBottomOf="@+id/heading_layout"
+            tools:text="Top-tier employers may be changing their official." />
+
+        <Button
+            android:id="@+id/buttonReadMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/trans"
+            android:onClick="@{readMoreClickListener}"
+            android:text="@string/read_more"
+            android:textAllCaps="true"
+            android:textColor="@color/grey_600"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textNewsAbstract" />
+
+        <TextView
+            android:id="@+id/textHeadingSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_mini"
+            android:ellipsize="middle"
+            android:text="@{`more from `+ news.section}"
+            android:textAllCaps="true"
+            android:textColor="@color/news_black"
+            android:textSize="@dimen/text_mini"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/buttonReadMore"
+            tools:text="MORE IN TECHNOLOGY" />
+    </android.support.constraint.ConstraintLayout>
+
+
+</layout>

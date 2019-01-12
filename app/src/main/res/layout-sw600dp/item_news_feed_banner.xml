@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="news"
+            type="com.satya.newyorktimes.data.model.News" />
+
+        <variable
+            name="itemClickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_mini"
+        android:layout_marginTop="@dimen/spacing_mini"
+        android:layout_marginBottom="@dimen/spacing_mini"
+        android:onClick="@{itemClickListener}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageNewsBanner"
+            android:layout_width="384dp"
+            android:layout_height="256dp"
+            android:scaleType="centerCrop"
+            imageUrl="@{news.getBannerImageLarge()}"
+            android:src="@drawable/image_loading"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/spacing_regular"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageNewsBanner"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/textNewsSource"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="middle"
+                android:fontFamily="@font/play_fair_display_italic"
+                android:singleLine="true"
+                android:text="@{news.byline}"
+                android:textColor="@color/news_black"
+                android:textSize="@dimen/text_regular"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="The New York Times" />
+
+            <TextView
+                android:id="@+id/textNewsTitle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/spacing_micro"
+                android:maxLines="6"
+                android:fontFamily="@font/play_fair_display_bold"
+                android:text="@{news.title}"
+                android:textColor="@color/news_black"
+                android:textSize="@dimen/text_medium"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textNewsType"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textNewsSource"
+                tools:text="Work Policies May Be Kinder, but Brutal Competition Isn’t" />
+
+
+            <TextView
+                android:id="@+id/textNewsType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_mini_2"
+                android:ellipsize="middle"
+                android:singleLine="true"
+                android:text="@{news.item_type}"
+                android:textColor="@color/gray100"
+                android:textSize="@dimen/text_mini"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="Artical" />
+
+            <TextView
+                android:id="@+id/textDot"
+                visibleGone="@{news.published_date != null &amp;&amp; news.published_date.length()>0 &amp;&amp; news.item_type != null &amp;&amp; news.item_type.length()>0}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_grid_size"
+                android:layout_marginTop="@dimen/spacing_mini_2"
+                android:ellipsize="middle"
+                android:singleLine="true"
+                android:text="|"
+                android:textColor="@color/gray100"
+                android:textSize="@dimen/text_mini"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textNewsType" />
+
+            <com.github.curioustechizen.ago.RelativeTimeTextView
+                android:id="@+id/textNewsPosted"
+                referenceTime="@{news.published_date}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_grid_size"
+                android:layout_marginTop="@dimen/spacing_mini_2"
+                android:ellipsize="middle"
+                android:singleLine="true"
+                android:textColor="@color/gray100"
+                android:textSize="@dimen/text_mini"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textDot"
+                tools:text="5 hours ago" />
+
+            <ImageView
+                android:layout_width="@dimen/icon_mini_2"
+                android:layout_height="@dimen/icon_mini_2"
+                android:layout_marginTop="@dimen/spacing_mini_2"
+                android:src="@drawable/ic_menu_share"
+                android:tint="@color/grey_500"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

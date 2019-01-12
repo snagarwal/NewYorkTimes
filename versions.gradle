@@ -1,0 +1,253 @@
+/**
+ * Shared file between builds so that they can all use the same dependencies and
+ * maven repositories.
+ **/
+ext.deps = [:]
+def versions = [:]
+versions.dagger = "2.16"
+versions.retrofit = "2.3.0"
+versions.okhttp = "3.6.0"
+versions.glide = "4.8.0"
+versions.glide_transformations = "2.0.2"
+versions.timber = "4.5.1"
+versions.tape = "1.2.3"
+versions.wire = "2.2.0"
+versions.android_gradle_plugin = '3.2.1'
+versions.google_services_plugin = "3.1.1"
+versions.rxjava2 = "2.1.3"
+versions.rx_android = "2.0.1"
+versions.kotlin = "1.3.11"
+versions.coroutine = "1.0.0"
+versions.coroutine_core ="1.0.0"
+versions.multi_dex = "1.0.2"
+versions.gson = "2.8.1"
+versions.moengage = "9.2.03"
+versions.crashlytics = "2.9.4@aar"
+versions.play_services = "11.8.0"
+versions.databinding = "3.1.2"
+versions.epoxy = "2.14.0"
+versions.firebase = "11.8.0"
+versions.fcm = "17.3.3"
+versions.leak_canary = "1.5.4"
+versions.stetho = "1.5.0"
+versions.roughike_bottombar = "2.3.1"
+versions.apache_commons_lang = "3.3.2"
+versions.pollexor = "2.0.4"
+versions.expectanim = "1.0.7"
+versions.lottie = "2.5.4"
+
+
+versions.espresso = "3.0.1"
+versions.mockwebserver = "3.8.1"
+versions.mockito = "2.7.19"
+versions.mockito_all = "1.10.19"
+versions.junit = "4.12"
+versions.hamcrest = "1.3"
+versions.powermock = "1.6.5"
+
+versions.support = "27.0.1"
+versions.constraint_layout = "1.1.3"
+versions.navigation = "1.0.0-alpha02"
+versions.lifecycle = "1.1.1"
+versions.room = "1.1.1"
+versions.ktx = "1.0.0-alpha1"
+versions.kodein = "5.2.0"
+versions.paris = "1.0.0"
+
+versions.hugo = "1.2.1"
+
+versions.expandabletextview = "1.0.5"
+
+
+
+versions.atv = "1.2.34-internal-sprint-2.20"
+
+versions.player = "3.0.1.14.1"
+
+versions.smarttab = "1.6.1@aar"
+
+def deps = [:]
+
+def atv = [:]
+atv.atvsdk = "tv.airtel.atv:atvsdk:$versions.atv"
+atv.analytics = "tv.airtel.atv:analytics:$versions.atv"
+atv.data = "tv.airtel.atv:data:$versions.atv"
+atv.util = "tv.airtel.atv:util:$versions.atv"
+atv.player = "tv.airtel.atv:atv-player:$versions.player"
+atv.exoplayer = "tv.airtel.atv:exoplayer:$versions.player"
+deps.atv = atv
+
+def facebook = [:]
+facebook.stetho = "com.facebook.stetho:stetho:$versions.stetho"
+deps.facebook = facebook
+
+def firebase = [:]
+firebase.remote_config = "com.google.firebase:firebase-config:$versions.firebase"
+firebase.fcm = "com.google.firebase:firebase-messaging:$versions.fcm"
+deps.firebase = firebase
+
+def kodein = [:]
+kodein.runtime = "org.kodein.di:kodein-di-generic-jvm:$versions.kodein"
+kodein.android = "org.kodein.di:kodein-di-framework-android-core:$versions.kodein"
+kodein.androidx = "org.kodein.di:kodein-di-framework-android-x:$versions.kodein"
+kodein.conf = "org.kodein.di:kodein-di-conf-jvm:$versions.kodein"
+deps.kodein = kodein
+
+def jetpack = [:]
+jetpack.appcompat = "com.android.support:appcompat-v7:$versions.support"
+jetpack.cardview = "com.android.support:cardview-v7:$versions.support"
+jetpack.recyclerview = "com.android.support:recyclerview-v7:$versions.support"
+jetpack.design = "com.android.support:design:$versions.support"
+jetpack.leanback = "com.android.support:leanback-v17:$versions.support"
+jetpack.leanback_pref = "com.android.support:preference-leanback-v17:$versions.support"
+
+jetpack.constraint_layout = "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
+
+jetpack.lifecycle = "android.arch.lifecycle:extensions:$versions.lifecycle"
+jetpack.lifecycle_testing = "android.arch.core:core-testing:$versions.lifecycle"
+jetpack.room_runtime = "android.arch.persistence.room:runtime:$versions.room"
+jetpack.room_compiler = "android.arch.persistence.room:compiler:$versions.room"
+jetpack.room_test = "android.arch.persistence.room:testing:$versions.room"
+
+jetpack.navigation_common = "android.arch.navigation:navigation-common-ktx:$versions.navigation"
+jetpack.navigation_fragment = "android.arch.navigation:navigation-fragment-ktx:$versions.navigation"
+jetpack.navigation_runtime = "android.arch.navigation:navigation-runtime-ktx:$versions.navigation"
+jetpack.navigation_ui = "android.arch.navigation:navigation-ui-ktx:$versions.navigation"
+deps.jetpack = jetpack
+
+
+def play_services = [:]
+play_services.base = "com.google.android.gms:play-services-base:$versions.play_services"
+deps.play_services = play_services
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.rxjava =  "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+deps.retrofit = retrofit
+deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_logging_interceptor}"
+
+def okhttp = [:]
+okhttp.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+okhttp.core =  "com.squareup.okhttp3:okhttp:$versions.okhttp"
+deps.okhttp = okhttp
+
+def dagger = [:]
+dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
+dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
+dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$versions.dagger"
+deps.dagger = dagger
+
+def epoxy = [:]
+epoxy.core =  "com.airbnb.android:epoxy:$versions.epoxy"
+epoxy.processor =  "com.airbnb.android:epoxy-processor:$versions.epoxy"
+epoxy.databinding =  "com.airbnb.android:epoxy-databinding:$versions.epoxy"
+epoxy.paging =  "com.airbnb.android:epoxy-paging:$versions.epoxy"
+deps.epoxy = epoxy
+
+def kotlin = [:]
+kotlin.stdlib_jdk7 = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+kotlin.extensions_plugin = "org.jetbrains.kotlin:kotlin-android-extensions:$versions.kotlin"
+kotlin.coroutine =  "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutine"
+kotlin.coroutine_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutine_core"
+deps.kotlin = kotlin
+
+def mockito = [:]
+deps.mockito = mockito
+
+def espresso = [:]
+espresso.core = "com.android.support.test.espresso:espresso-core:$versions.espresso"
+espresso.contrib = "com.android.support.test.espresso:espresso-contrib:$versions.espresso"
+espresso.intents = "com.android.support.test.espresso:espresso-intents:$versions.espresso"
+deps.espresso = espresso
+
+def leakcanary = [:]
+leakcanary.android = "com.squareup.leakcanary:leakcanary-android:$versions.leak_canary"
+leakcanary.noop =  "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leak_canary"
+deps.leakcanary = leakcanary
+
+def powermock = [:]
+powermock.runtime = "org.powermock:powermock:$versions.powermock"
+powermock.moduleodule = "org.powermock:powermock-module-junit4:$versions.powermock"
+powermock.api = "org.powermock:powermock-api-mockito:$versions.powermock"
+deps.powermock = powermock
+
+def testing = [:]
+testing.junit = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+testing.mock_web_server = "com.squareup.okhttp3:mockwebserver:$versions.mockwebserver"
+testing.hamcrest = "org.hamcrest:hamcrest-all:$versions.hamcrest"
+deps.testing = testing
+
+def expandabletextview = [:]
+expandabletextview.textview = "at.blogc:expandabletextview:$versions.expandabletextview"
+deps.expandabletextview = expandabletextview
+
+
+deps.file_tree =  fileTree(include: ['*.jar'], dir: 'libs')
+deps.gson =  "com.google.code.gson:gson:$versions.gson"
+deps.multidex =  "com.android.support:multidex:$versions.multi_dex"
+deps.glide = "com.github.bumptech.glide:glide:$versions.glide"
+deps.glide_transformations = "jp.wasabeef:glide-transformations:$versions.glide_transformations"
+deps.timber = "com.jakewharton.timber:timber:$versions.timber"
+deps.junit = "junit:junit:$versions.junit"
+deps.mockito = "org.mockito:mockito-core:$versions.mockito"
+deps.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
+deps.rx_android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+deps.moengage = "com.moengage:moe-android-sdk:$versions.moengage"
+deps.tape = "com.squareup:tape:$versions.tape"
+deps.wire = "com.squareup.wire:wire-runtime:$versions.wire"
+deps.crashlytics = "com.crashlytics.sdk.android:crashlytics:$versions.crashlytics"
+deps.google_services_plugin = "com.google.gms:google-services:$versions.google_services_plugin"
+deps.databinding_compiler = "com.android.databinding:compiler:$versions.databinding"
+deps.roughike_bottombar = "com.roughike:bottom-bar:$versions.roughike_bottombar"
+deps.apache_commons_lang = "org.apache.commons:commons-lang3:$versions.apache_commons_lang"
+deps.pollexor = "com.squareup:pollexor:$versions.pollexor"
+deps.expectanim = "com.github.florent37:expectanim:$versions.expectanim"
+deps.lottie = "com.airbnb.android:lottie:$versions.lottie"
+deps.paris = "com.airbnb.android:paris:$versions.paris"
+deps.smarttab = "com.ogaclejapan.smarttablayout:library:$versions.smarttab"
+deps.joda_time = "joda-time:joda-time:$versions.joda_time"
+deps.hugo_plugin = "com.jakewharton.hugo:hugo-plugin:$versions.hugo"
+
+deps.mockito_core = "org.mockito:mockito-core:$versions.mockito"
+deps.mockito_all = "org.mockito:mockito-all:$versions.mockito_all"
+
+ext.deps = deps
+
+def build_versions = [:]
+build_versions.min_sdk = 25
+build_versions.compile_sdk = 28
+build_versions.target_sdk = 28
+build_versions.build_tools = "28.0.3"
+ext.build_versions = build_versions
+
+def addRepos(RepositoryHandler handler) {
+    handler.mavenCentral()
+    handler.maven { url "http://nexus.bsbportal.com/nexus/content/repositories/releases"
+        credentials {
+            username "airteltv"
+            password "airteltv"
+        }
+
+    }
+    handler.maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    handler.google()
+    handler.maven { url "https://jitpack.io" }
+    handler.jcenter()
+    handler.maven { url 'https://dl.bintray.com/kodein-framework/Kodein-DI/' }
+    handler.maven {
+        url "https://mvnrepository.com/artifact/org.apache.commons/commons-lang3"
+    }
+    handler.maven {
+        url 'https://maven.fabric.io/public'
+    }
+    handler.maven { url "https://jitpack.io" }
+    handler.maven { url 'https://maven.fabric.io/public' }
+}
+
+ext.addRepos = this.&addRepos
